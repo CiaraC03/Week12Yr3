@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RequestMapping("/person")
 @RestController
@@ -27,6 +28,19 @@ public class PersonController {
         }
 
         return ResponseEntity.ok(person);
+    }
+
+    @GetMapping("/findAllPersons")
+    public ResponseEntity<?> getAllPersons() {
+
+
+        List<Person> persons = personService.getAllPersons();
+
+        if (persons == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(persons);
     }
 
     @PostMapping("/createPerson")

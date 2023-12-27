@@ -2,6 +2,8 @@ package ie.atu.week11example;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonService {
     // Placeholder method to save a person (add to Db in the next two weeks)
@@ -19,5 +21,9 @@ public class PersonService {
     public Person getPersonByEmployeeId(String employeeId) {
         return personRepository.findByEmployeeId(employeeId);
 
+    }
+
+    public List<Person> getAllPersons() {
+        return personRepository.findAll();
     }
 }
